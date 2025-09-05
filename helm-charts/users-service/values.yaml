@@ -3,7 +3,7 @@ namespace: microservices
 image:
   repository: fabrice28/users_service
 
-  tag: "18"
+  tag: "24"
   pullPolicy: Always
 
 replicaCount: 1
