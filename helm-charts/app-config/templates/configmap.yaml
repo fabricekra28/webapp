@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: microservices
+data:
+  DB_HOST: "db"
+  POSTGRES_USER: "postgres"
+  POSTGRES_PASSWORD: "postgres" 
+  POSTGRES_DB: "microservices_db"
+  DATABASE_URL: "postgresql+psycopg2://postgres:postgres@db:5432/microservices_db"
+  USERS_SERVICE_URL: "http://users-service:8001"
+  PRODUCTS_SERVICE_URL: "http://products-service:8002"
+  ORDERS_SERVICE_URL: "http://orders-service:8003"

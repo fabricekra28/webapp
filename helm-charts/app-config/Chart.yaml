@@ -1,0 +1,4 @@
+apiVersion: v2
+name: app-config
+description: Configuration Map for Microservices
+version: 1.0.0
