@@ -2,7 +2,7 @@ namespace: microservices
 
 image:
   repository: fabrice28/orders_service
-  tag: "18"
+  tag: "1"
   pullPolicy: Always
 
 replicaCount: 1
