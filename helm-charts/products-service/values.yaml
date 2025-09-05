@@ -1,0 +1,27 @@
+namespace: microservices
+
+image:
+  repository: 3371c74d52c8.ngrok-free.app/products_service
+  tag: "13"
+  pullPolicy: Always
+
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 8002
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "250m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+
+readinessProbe:
+  httpGet:
+    path: /
+    port: 8002
+  initialDelaySeconds: 10
+  periodSeconds: 5
