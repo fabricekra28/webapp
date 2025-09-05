@@ -1,0 +1,36 @@
+namespace: microservices
+image:
+  repository: 3371c74d52c8.ngrok-free.app/gateway_service
+  tag: "14"
+  pullPolicy: Always
+replicaCount: 1
+
+service:
+  type: NodePort
+  port: 8000
+  nodePort: 31082
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "250m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+
+# AUGMENTER les délais des probes
+readinessProbe:
+  tcpSocket:
+    port: 8000
+  initialDelaySeconds: 30  # Augmenté à 30 secondes
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+livenessProbe:
+  tcpSocket:
+    port: 8000
+  initialDelaySeconds: 40  # Augmenté à 40 secondes
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
