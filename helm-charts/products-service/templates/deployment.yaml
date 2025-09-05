@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: products-service
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: products-service
+    chart: {{ .Chart.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: products-service
+  template:
+    metadata:
+      labels:
+        app: products-service
+    spec:
+      initContainers:
+        - name: wait-for-db
+          image: busybox:1.28
+          command: ['sh', '-c', 'until nc -z db 5432; do echo "Waiting for PostgreSQL..."; sleep 2; done']
+      containers:
+        - name: products-service
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+            - configMapRef:
+                name: app-config
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          readinessProbe:
+            {{- toYaml .Values.readinessProbe | nindent 12 }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
