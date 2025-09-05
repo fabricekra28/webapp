@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: products-service
+  name: users-service
   namespace: {{ .Values.namespace }}
   labels:
-    app: products-service
+    app: users-service
     chart: {{ .Chart.Name }}
 spec:
   selector:
-    app: products-service
+    app: users-service
   ports:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.port }}
