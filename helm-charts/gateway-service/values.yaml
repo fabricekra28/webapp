@@ -1,6 +1,6 @@
 namespace: microservices
 image:
-  repository: 3371c74d52c8.ngrok-free.app/gateway_service
+  repository: fabrice28/gateway_service
   tag: "14"
   pullPolicy: Always
 replicaCount: 1
