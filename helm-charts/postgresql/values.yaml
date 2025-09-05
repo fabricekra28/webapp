@@ -1,0 +1,29 @@
+# REPRODUCTION EXACTE de votre configuration
+namespace: microservices
+
+image:
+  repository: postgres
+  tag: "15"
+  pullPolicy: IfNotPresent
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "250m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+
+storage:
+  size: "1Gi"
+  accessModes: ["ReadWriteOnce"]
+
+env:
+  POSTGRES_USER: "postgres"
+  POSTGRES_PASSWORD: "postgres"
+  POSTGRES_DB: "microservices_db"
+
+service:
+  type: ClusterIP
+  port: 5432
+  name: db
