@@ -1,7 +1,7 @@
 namespace: microservices
 image:
   repository: fabrice28/gateway_service
-  tag: "14"
+  tag: "2"
   pullPolicy: Always
 replicaCount: 1
 
