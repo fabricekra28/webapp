@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-service
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: gateway-service
+    chart: {{ .Chart.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: gateway-service
+  template:
+    metadata:
+      labels:
+        app: gateway-service
+    spec:
+      initContainers:
+        - name: wait-for-backends
+          image: busybox:1.28
+          command: ['sh', '-c', 'until nc -z users-service 8001 && nc -z products-service 8002 && nc -z orders-service 8003; do echo "Waiting for backends..."; sleep 2; done']
+      containers:
+        - name: gateway-service
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+            - configMapRef:
+                name: app-config
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          readinessProbe:
+            {{- toYaml .Values.readinessProbe | nindent 12 }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
