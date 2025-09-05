@@ -1,0 +1,4 @@
+apiVersion: v2
+name: orders-service
+description: orders Microservice - Complete Helm Chart
+version: 1.0.0
