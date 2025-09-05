@@ -1,7 +1,7 @@
 namespace: microservices
 
 image:
-  repository: 3371c74d52c8.ngrok-free.app/users_service
+  repository: fabrice28/users_service
 
   tag: "18"
   pullPolicy: Always
