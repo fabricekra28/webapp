@@ -1,34 +1,29 @@
-# Configuration de l'application
 app:
   name: "crud-app"
   namespace: "microservices"
 
-# Domaines et certificats
+# UTILISER .test au lieu de .local
 domains:
-  primary: "crud-app.com"  # ← À changer pour votre domaine réel
+  primary: "crud-app.test"
   aliases:
-    - "www.crud-app.com"
+    - "www.crud-app.test"
 
-# Configuration des services
 services:
   gateway:
     name: "gateway-service"
     port: 8000
     path: "/"
 
-# Configuration des certificats
+# GARDER SSL avec Let's Encrypt staging
 certificate:
   secretName: "crud-app-tls"
-  issuer: "letsencrypt-staging"  # Staging pour test, puis "letsencrypt-prod"
+  issuer: "letsencrypt-staging"
 
-# Email pour Let's Encrypt (OBLIGATOIRE)
 letsencrypt:
-  email: "krafabrice64@gmail.com"  # ← REMPLACER par votre vrai email
+  email: "krafabrice64@gmail.com"  # Email test OK
 
-# Configuration Ingress
 ingress:
   className: "nginx"
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: "10m"
