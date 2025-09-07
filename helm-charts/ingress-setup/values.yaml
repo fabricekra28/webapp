@@ -5,9 +5,9 @@ app:
 
 # Domaines et certificats
 domains:
-  primary: "crud-app.local"  # ← À changer pour votre domaine réel
+  primary: "crud-app.com"  # ← À changer pour votre domaine réel
   aliases:
-    - "www.crud-app.local"
+    - "www.crud-app.com"
 
 # Configuration des services
 services:
