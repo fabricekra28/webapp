@@ -3,12 +3,12 @@ image:
   repository: fabrice28/gateway_service
   tag: "2"
   pullPolicy: Always
-replicaCount: 1
+replicaCount: 2
 
 service:
-  type: NodePort
+  type: ClusterIP
   port: 8000
-  nodePort: 31082
+#  nodePort: 31082
 
 resources:
   requests:
