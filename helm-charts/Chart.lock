@@ -17,5 +17,8 @@ dependencies:
 - name: gateway-service
   repository: file://./gateway-service
   version: 1.0.0
-digest: sha256:aa5a232e4a603df1c551dde4ad2af07e8f81c45077f2c0c533f5a039cfeceb41
-generated: "2025-09-05T22:11:01.658374Z"
+- name: gateway-ingress
+  repository: file://./gateway-ingress
+  version: 1.0.0
+digest: sha256:bd7ee3f1c012a69a275b86bd2c67cf391dfe6ef830dfa3f37d75b98b184c55b8
+generated: "2025-09-09T16:18:09.154574Z"
