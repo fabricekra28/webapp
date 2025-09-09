@@ -4,6 +4,8 @@ kind: Ingress
 metadata:
   name: {{ include "gateway-ingress.fullname" . }}
   namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "gateway-ingress.labels" . | nindent 4 }}
   annotations:
     kubernetes.io/ingress.class: {{ .Values.ingress.className }}
     {{- if .Values.ingress.forceSSLRedirect }}
