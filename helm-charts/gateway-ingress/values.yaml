@@ -1,5 +1,12 @@
-namespace: microservices   # Namespace où le service existe et où l'ingress sera créé
+# Namespace où déployer l'ingress
+namespace: microservices
 
+# Service existant vers lequel l'ingress pointe
+service:
+  name: gateway-service
+  port: 8000
+
+# Configuration de l'ingress
 ingress:
   enabled: true
   className: nginx
@@ -13,7 +20,3 @@ ingress:
         - myapp.local
       secretName: my-tls-secret
   forceSSLRedirect: true
-
-service:
-  name: gateway-service
-  port: 8000
