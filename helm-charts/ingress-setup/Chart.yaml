@@ -1,6 +1,0 @@
-apiVersion: v2
-name: gateway-ingress
-description: Helm chart pour créer l'Ingress du service gateway-service
-type: application
-version: 0.1.0
-appVersion: "1.0"
