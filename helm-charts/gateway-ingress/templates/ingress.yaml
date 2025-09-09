@@ -2,10 +2,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "gateway-ingress.fullname" . }}
+  # On utilise directement le nom de la release pour éviter les include
+  name: {{ .Release.Name }}-gateway-ingress
   namespace: {{ .Values.namespace }}
-  labels:
-    {{- include "gateway-ingress.labels" . | nindent 4 }}
   annotations:
     kubernetes.io/ingress.class: {{ .Values.ingress.className }}
     {{- if .Values.ingress.forceSSLRedirect }}
