@@ -1,0 +1,6 @@
+apiVersion: v2
+name: gateway-ingress
+description: Helm chart pour créer l'Ingress du service gateway-service
+type: application
+version: 1.0.0   # <-- version exacte qui doit matcher celle référencée comme dépendance
+appVersion: "1.0"
