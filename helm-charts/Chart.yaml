@@ -22,3 +22,7 @@ dependencies:
   - name: gateway-service
     version: "1.0.0"
     repository: "file://./gateway-service"
+  - name: gateway-ingress
+    version: "1.0.0"
+    repository: "file://../gateway-ingress"
+
