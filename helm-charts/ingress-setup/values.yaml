@@ -1,29 +1,19 @@
-app:
-  name: "crud-app"
-  namespace: "microservices"
-
-# UTILISER .test au lieu de .local
-domains:
-  primary: "crud-app.test"
-  aliases:
-    - "www.crud-app.test"
-
-services:
-  gateway:
-    name: "gateway-service"
-    port: 8000
-    path: "/"
-
-# GARDER SSL avec Let's Encrypt staging
-certificate:
-  secretName: "crud-app-tls"
-  issuer: "letsencrypt-staging"
-
-letsencrypt:
-  email: "krafabrice64@gmail.com"  # Email test OK
+namespace: microservices   # Namespace où le service existe et où l'ingress sera créé
 
 ingress:
-  className: "nginx"
-  annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+  enabled: true
+  className: nginx
+  hosts:
+    - host: myapp.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts:
+        - myapp.local
+      secretName: my-tls-secret
+  forceSSLRedirect: true
+
+service:
+  name: gateway-service
+  port: 8000
